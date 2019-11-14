@@ -1,5 +1,7 @@
 'use strict'
 
+const store = require('../store')
+
 const onSuccess = message => {
   $('#message')
     .removeClass('failure')
@@ -26,7 +28,21 @@ const onSignupFailure = () => {
   onFailure('you are not worth the Game')
 }
 
+const onSigninSuccess = responseData => {
+  store.user = responseData.user
+  console.log(store)
+  onSuccess('make your choice')
+  $('.after-auth').show()
+  $('.before-auth').hide()
+}
+
+const onSignInFailure = () => {
+  onFailure('that is not an account')
+}
+
 module.exports = {
   onSignupSuccess,
-  onSignupFailure
+  onSignupFailure,
+  onSigninSuccess,
+  onSignInFailure
 }
