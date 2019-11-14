@@ -11,7 +11,35 @@
       <script src="public/vendor.js" type="text/javascript" charset="utf-8" defer></script>
       <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
     </head>
-    <body>
-      <h1>Browser Template</h1>
-    </body>
+<body>
+  <h1>fuckin' let goooooo</h1>
+  <section class="before-auth">
+    <h2>welcome to the Game</h2>
+    <form id="signup">
+      <input name="credentials[email]" type="email" value="email">
+      <input name="credentials[password]" type="password" value="password">
+      <input name="credentials[password_confirmation]" type="password" value="password confirmation">
+      <button class="btn btn-primary">sign up</button>
+    </form>
+    <h2>welcome back to the Game</h2>
+    <form id="signin">
+      <input type="email" name="credentials[email]" placeholder="email">
+      <input type="password" name="credentials[password]" placeholder="password">
+      <button class="btn btn-primary">sign in</button>
+    </form>
+  </section>
+  <section class="after-auth">
+    <h2>new password</h2>
+    <form id="changepw">
+      <input name="passwords[old]" type="text" placeholder="old password">
+      <input name="passwords[new]" type="text" placeholder="new password">
+      <button class="btn btn-secondary">change it</button>
+    </form>
+    <h2>sign out</h2>
+    <form id="signout">
+      <button class="btn btn-danger">you'll be back</button>
+    </form>
+  </section>
+</body>
+
 </html>
