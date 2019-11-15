@@ -2,6 +2,26 @@
 const api = require('./api')
 const getFormFields = require('../../../lib/get-form-fields')
 
+const gameBoard = ['','','','','','','','','']
+
+let player = 'x'
+
+const nextTurn = () => {
+  if (player === 'x') {
+    player = 'o'
+    console.log(player)
+  } else {
+    player = 'x'
+    console.log(player)
+  }
+}
+
+const onClick = event => {
+  event.preventDefault()
+  console.log('clicked!')
+
+}
+
 const onSignup = event => {
   event.preventDefault()
   const form = event.target
