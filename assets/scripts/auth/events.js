@@ -2,7 +2,7 @@
 const api = require('./api')
 const getFormFields = require('../../../lib/get-form-fields')
 
-const gameBoard = ['','','','','','','','','']
+const gameBoard = ['', '', '', '', '', '', '', '', '']
 
 let player = 'x'
 
@@ -19,8 +19,15 @@ const nextTurn = () => {
 const onClick = event => {
   event.preventDefault()
   console.log('clicked!')
-
+  if ($(event.target).text() === '') {
+    $(event.target).text(player)
+    nextTurn()
+  } else {
+    console.log('the move is invalid')
+  }
 }
+
+$('.box').on('click', onClick)
 
 const onSignup = event => {
   event.preventDefault()
