@@ -19,8 +19,15 @@
 // }
 .square {
   border: 5px solid #ff6030;
+  padding: 20px;
   // color: #ff6030;
   cursor: pointer;
+}
+
+.col-1 {
+  border: 0;
+  margin: 0;
+  padding: 0;
 }
 
 .container {
