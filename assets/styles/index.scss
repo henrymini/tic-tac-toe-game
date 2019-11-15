@@ -17,6 +17,20 @@
 // .after-auth {
 //   display: none;
 // }
-.row {
+.square {
   border: 5px solid #ff6030;
+  color: #ff6030;
+}
+
+.container {
+  background-color: #000;
+  border: 5px solid #ff6030;
+  display: grid;
+  text-align: center;
+}
+
+.row {
+  display: flex;
+  margin: 20px;
+  // padding: 20px;
 }
