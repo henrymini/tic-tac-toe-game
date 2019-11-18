@@ -13,15 +13,17 @@
 .failure {
   background-color: red;
 }
-//
-// .after-auth {
-//   display: none;
-// }
+
+.after-auth {
+  display: none;
+}
+
 .square {
   border: 5px solid #ff6030;
+  cursor: pointer;
+  margin: 0;
   padding: 20px;
   // color: #ff6030;
-  cursor: pointer;
 }
 
 .col-1 {

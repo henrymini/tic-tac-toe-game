@@ -1,28 +1,29 @@
 'use strict'
 const api = require('./api')
 const getFormFields = require('../../../lib/get-form-fields')
+const ui = require('./ui')
 
-const gameBoard = ['#1', '#2', '#3', '#4', '#5', '#6', '#7', '#8', '#9']
-
-const gameOver = () => {
-  if (gameBoard[0] === gameBoard[1] && gameBoard[1] === gameBoard[2]) {
-    console.log('games over')
-  } else if (gameBoard[3] === gameBoard[4] && gameBoard[4] === gameBoard[5]) {
-    console.log('game over')
-  } else if (gameBoard[6] === gameBoard[7] && gameBoard[7] === gameBoard[8]) {
-    console.log('game over')
-  } else if (gameBoard[0] === gameBoard[3] && gameBoard[3] === gameBoard[6]) {
-    console.log('games over')
-  } else if (gameBoard[1] === gameBoard[4] && gameBoard[4] === gameBoard[7]) {
-    console.log('game over')
-  } else if (gameBoard[2] === gameBoard[5] && gameBoard[5] === gameBoard[8]) {
-    console.log('game over')
-  } else if (gameBoard[0] === gameBoard[4] && gameBoard[4] === gameBoard[8]) {
-    console.log('game over')
-  } else if (gameBoard[2] === gameBoard[4] && gameBoard[4] === gameBoard[6]) {
-    console.log('game over')
-  }
-}
+// let gameBoard = ['#1', '#2', '#3', '#4', '#5', '#6', '#7', '#8', '#9']
+//
+// const gameOver = () => {
+//   if (gameBoard[0] === gameBoard[1] && gameBoard[1] === gameBoard[2]) {
+//     console.log('games over')
+//   } else if (gameBoard[3] === gameBoard[4] && gameBoard[4] === gameBoard[5]) {
+//     console.log('game over')
+//   } else if (gameBoard[6] === gameBoard[7] && gameBoard[7] === gameBoard[8]) {
+//     console.log('game over')
+//   } else if (gameBoard[0] === gameBoard[3] && gameBoard[3] === gameBoard[6]) {
+//     console.log('games over')
+//   } else if (gameBoard[1] === gameBoard[4] && gameBoard[4] === gameBoard[7]) {
+//     console.log('game over')
+//   } else if (gameBoard[2] === gameBoard[5] && gameBoard[5] === gameBoard[8]) {
+//     console.log('game over')
+//   } else if (gameBoard[0] === gameBoard[4] && gameBoard[4] === gameBoard[8]) {
+//     console.log('game over')
+//   } else if (gameBoard[2] === gameBoard[4] && gameBoard[4] === gameBoard[6]) {
+//     console.log('game over')
+//   }
+// }
 
 let player = 'x'
 
@@ -38,8 +39,8 @@ const nextTurn = () => {
 
 const onClick = event => {
   event.preventDefault()
-  gameOver()
-  // console.log('clicked!')
+  // gameOver(event.target)
+  console.log('clicked!')
   if ($(event.target).text() === '') {
     $(event.target).text(player)
     nextTurn()
@@ -64,8 +65,11 @@ const onSignup = event => {
   const form = event.target
   const formData = getFormFields(form)
   api.signup(formData)
+    .then(ui.onSignupSuccess)
+    // .then(console.log('worked'))
+    .catch(ui.onSignupFailure)
   console.log(formData)
-  // console.log('im in')
+  console.log('signed up')
 }
 
 const onSignin = event => {
@@ -73,7 +77,10 @@ const onSignin = event => {
   const form = event.target
   const formData = getFormFields(form)
   api.signin(formData)
+    .then(ui.onSigninSuccess)
+    .catch(ui.onSigninFailure)
   console.log(formData)
+  console.log('signed in')
 }
 
 const onChangePassword = event => {
@@ -81,13 +88,17 @@ const onChangePassword = event => {
   const form = event.target
   const formData = getFormFields(form)
   api.changepw(formData)
+    .then(ui.onChangePasswordSuccess)
+    .catch(ui.onChangePasswordFailure)
   console.log(formData)
 }
 
 const onSignout = event => {
   event.preventDefault()
   api.signout()
-  console.log('signed out')
+    .then(ui.onSignoutSuccess)
+    .catch(ui.onSignoutFailure)
+  console.log('yeeeeeeee')
 }
 
 const addHandlers = event => {

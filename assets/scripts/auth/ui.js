@@ -34,15 +34,40 @@ const onSigninSuccess = responseData => {
   onSuccess('make your choice')
   $('.after-auth').show()
   $('.before-auth').hide()
+  console.log('sign in worked')
 }
 
 const onSignInFailure = () => {
   onFailure('that is not an account')
 }
 
+const onChangePasswordSuccess = () => {
+  onSuccess('you have changed your password')
+}
+
+const onChangePasswordFailure = () => {
+  onFailure('you have not changed your password')
+}
+
+const onSignoutSuccess = responseData => {
+  store.user = store
+  onSuccess('you will be back')
+  $('.before-auth').show()
+  $('.after-auth').hide()
+  console.log('signed out')
+}
+
+const onSignoutFailure = () => {
+  onFailure('you have not signed out')
+}
+
 module.exports = {
   onSignupSuccess,
   onSignupFailure,
   onSigninSuccess,
-  onSignInFailure
+  onSignInFailure,
+  onChangePasswordSuccess,
+  onChangePasswordFailure,
+  onSignoutSuccess,
+  onSignoutFailure
 }
