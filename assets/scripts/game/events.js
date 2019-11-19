@@ -27,6 +27,7 @@ const newGame = event => {
     .then(ui.createGameSuccess)
     .catch(ui.createGameFailure)
   $('#message').text('')
+  over = false
 }
 
 let winConditional = false
@@ -98,6 +99,7 @@ const onCreateGame = event => {
   api.create()
     .then(ui.createGameSuccess)
     .catch(ui.createGameFailure)
+  over = false
 }
 
 const onGetStats = () => {
