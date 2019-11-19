@@ -1,7 +1,7 @@
 'use strict'
 const api = require('./api')
 const ui = require('./ui')
-const store = require('../store')
+// const store = require('../store')
 
 const gameBoard = []
 
@@ -95,7 +95,6 @@ const onCreateGame = event => {
   api.create()
     .then(ui.createGameSuccess)
     .catch(ui.createGameFailure)
-
 }
 
 const onGetStats = () => {
@@ -124,7 +123,7 @@ const onGridClick = event => {
   const index = $(event.target).data('square')
   const value = player
   gameBoard[index] = value
-  if ($(event.target).text() === '') {
+  if (($(event.target).text() === '') && (over === false)) {
     $(event.target).text(player)
     nextTurn()
     const winner = checkForWinner()
