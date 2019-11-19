@@ -23,6 +23,9 @@ const newGame = event => {
   console.log('new game!')
   $('.square').text('')
   $('#message').text('')
+  api.create()
+    .then(ui.createGameSuccess)
+    .catch(ui.createGameFailure)
 }
 $('#new-game').on('click', newGame)
 
@@ -130,7 +133,7 @@ const onGridClick = event => {
     if (winConditional === true) {
       $('#message').text(winner)
       over = true
-    } else if (gameBoard.length === 9) {
+    } else if ((gameBoard.length === 9) && (over === false)) {
       $('#message').text('tie!')
       over = true
     }
