@@ -20,13 +20,13 @@
       <input name="credentials[email]" type="email" placeholder="email">
       <input name="credentials[password]" type="password" placeholder="password">
       <input name="credentials[password_confirmation]" type="password" placeholder="password confirmation">
-      <button class="btn btn-primary">sign up</button>
+      <button class="btn btn-info">sign up</button>
     </form>
     <h2>welcome back to the Game</h2>
     <form id="signin">
       <input type="email" name="credentials[email]" placeholder="email">
       <input type="password" name="credentials[password]" placeholder="password">
-      <button class="btn btn-primary">sign in</button>
+      <button class="btn btn-info">sign in</button>
     </form>
   </section>
   <section class="after-auth">
@@ -35,48 +35,49 @@
     <div class="container">
       <div class="row">
         <div class="col-1 box">
-          <div class="square" id="1"></div>
+          <div class="square" data-square='0' id="1"></div>
         </div>
         <div class="col-1 box">
-          <div class="square" id="2"></div>
+          <div class="square" data-square='1' id="2"></div>
         </div>
         <div class="col-1 box">
-          <div class="square" id="3"></div>
-        </div>
-        <div class="w-100"></div>
-        <div class="col-1 box">
-          <div class="square" id="4" ></div>
-        </div>
-        <div class="col-1 box">
-          <div class="square" id="5" ></div>
-        </div>
-        <div class="col-1 box">
-          <div class="square" id="6" ></div>
+          <div class="square" data-square='2' id="3"></div>
         </div>
         <div class="w-100"></div>
         <div class="col-1 box">
-          <div class="square" id="7" ></div>
+          <div class="square" data-square='3' id="4" ></div>
         </div>
         <div class="col-1 box">
-          <div class="square" id="8" ></div>
+          <div class="square" data-square='4' id="5" ></div>
         </div>
         <div class="col-1 box">
-          <div class="square" id="9" ></div>
+          <div class="square" data-square='5' id="6" ></div>
+        </div>
+        <div class="w-100"></div>
+        <div class="col-1 box">
+          <div class="square" data-square='6' id="7" ></div>
+        </div>
+        <div class="col-1 box">
+          <div class="square" data-square='7' id="8" ></div>
+        </div>
+        <div class="col-1 box">
+          <div class="square" data-square='8' id="9" ></div>
         </div>
       </div>
     </div>
 
     <button class="btn btn-block" id="new-game">new game</button>
-
+    <button class="btn btn-block" id="create-game">create game</button>
+    <button class="btn btn-block" id="get-stats">stats</button>
     <h2>new password</h2>
     <form id="changepw">
       <input name="passwords[old]" type="text" placeholder="old password">
       <input name="passwords[new]" type="text" placeholder="new password">
-      <button class="btn btn-secondary">change it</button>
+      <button class="btn btn-info">change it</button>
     </form>
     <h2>sign out</h2>
     <form id="signout">
-      <button class="btn btn-danger">you'll be back</button>
+      <button class="btn btn-dark">you'll be back</button>
     </form>
   </section>
 </body>

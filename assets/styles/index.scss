@@ -16,14 +16,25 @@
 
 .after-auth {
   display: none;
+  text-align: center;
 }
+
+// .box {
+//   display: flex;
+//   min-height: calc(100%/3);
+// }
 
 .square {
   border: 5px solid #ff6030;
   cursor: pointer;
-  margin: 0;
+  margin: 0 auto;
   padding: 20px;
+  // text-shadow: 2px 2px #ff6030;
   // color: #ff6030;
+}
+
+.before-auth {
+  text-align: center;
 }
 
 .col-1 {
@@ -34,11 +45,12 @@
 
 .container {
   display: grid;
+  margin: auto;
   text-align: center;
 }
 
 .row {
-  display: flex;
+  // display: flex;
   margin: 20px;
   // padding: 20px;
 }

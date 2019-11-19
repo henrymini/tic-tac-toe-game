@@ -1,19 +1,58 @@
-const create = formData => {
+'use strict'
+
+const config = require('../config')
+const store = require('../store')
+
+const create = () => {
   return $.ajax({
-    url: config.apiUrl + '/sign-in',
+    url: config.apiUrl + '/games',
     method: 'POST',
-    data: formData
+    headers: {
+      Authorization: `Token token=${store.user.token}`
+    }
   })
 }
 
-const index = formData => {
+const index = gameData => {
   return $.ajax({
-    url: config.apiUrl + '/sign-up',
-    method: 'POST',
-    data: formData
+    url: config.apiUrl + '/games[?over=]',
+    method: 'GET',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    }
   })
 }
+
+const show = gameData => {
+  return $.ajax({
+    url: config.apiUrl + '/games/' + store.game.id,
+    method: 'GET',
+    data: gameData
+  })
+}
+
+const update = (index, value, over) => {
+  return $.ajax({
+    url: config.apiUrl + '/games/' + store.game.id,
+    method: 'PATCH',
+    headers: {
+      Authorization: `Token token=${store.user.token}`
+    },
+    data: {
+      'game': {
+        'cell': {
+          'index': index,
+          'value': value
+        },
+        'over': over
+      }
+    }
+  })
+}
+
 module.exports = {
   create,
-  index
+  index,
+  show,
+  update
 }
