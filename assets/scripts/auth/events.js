@@ -79,14 +79,6 @@ const addHandlers = event => {
   $('#signout').on('submit', onSignout)
 }
 
-const newGame = event => {
-  event.preventDefault()
-  player = 'x'
-  console.log('new game!')
-  $('.square').text('')
-}
-$('#new-game').on('click', newGame)
-
 module.exports = {
   addHandlers
 }

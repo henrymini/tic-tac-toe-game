@@ -17,13 +17,14 @@ const nextTurn = () => {
   }
 }
 
-// const newGame = event => {
-//   event.preventDefault()
-//   player = 'x'
-//   console.log('new game!')
-//   $('.square').text('')
-// }
-// $('#new-game').on('click', newGame)
+const newGame = event => {
+  event.preventDefault()
+  player = 'x'
+  console.log('new game!')
+  $('.square').text('')
+  $('#message').text('')
+}
+$('#new-game').on('click', newGame)
 
 let winConditional = false
 
@@ -94,6 +95,7 @@ const onCreateGame = event => {
   api.create()
     .then(ui.createGameSuccess)
     .catch(ui.createGameFailure)
+
 }
 
 const onGetStats = () => {
