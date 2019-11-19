@@ -34,8 +34,8 @@ const createGameFailure = responseData => {
 
 const onGetStatsSuccess = data => {
   const gamesStarted = data.games
-  const gamesCompleted = gamesStarted.filter(game => game.over)
-  $('#message').text(`you have played ${gamesCompleted.length} games`)
+  // const gamesCompleted = gamesStarted.filter(game => game.over)
+  $('#message').text(`you have played ${gamesStarted.length} games`)
 }
 
 const onGetStatsFailure = data => {

@@ -3,8 +3,8 @@ const api = require('./api')
 const ui = require('./ui')
 // const store = require('../store')
 
-const gameBoard = []
-
+let gameBoard = []
+let over = false
 let player = 'x'
 
 const nextTurn = () => {
@@ -20,14 +20,14 @@ const nextTurn = () => {
 const newGame = event => {
   event.preventDefault()
   player = 'x'
+  gameBoard = []
   console.log('new game!')
   $('.square').text('')
-  $('#message').text('')
   api.create()
     .then(ui.createGameSuccess)
     .catch(ui.createGameFailure)
+  $('#message').text('')
 }
-$('#new-game').on('click', newGame)
 
 let winConditional = false
 
@@ -107,43 +107,31 @@ const onGetStats = () => {
     .catch(ui.onGetStatsSuccess)
 }
 
-// const onClick = event => {
-//   event.preventDefault()
-//   // gameOver(event.target)
-//   console.log('clicked!')
-//   if ($(event.target).text() === '') {
-//     $(event.target).text(player)
-//     nextTurn()
-//   } else {
-//     console.log('the move is invalid')
-//   }
-// }
-// $('.box').on('click', onClick)
-
 const onGridClick = event => {
-  event.preventDefault()
-  let over = false
-  const index = $(event.target).data('square')
-  const value = player
-  gameBoard[index] = value
-  if (($(event.target).text() === '') && (over === false)) {
-    $(event.target).text(player)
-    nextTurn()
-    const winner = checkForWinner()
-    if (winConditional === true) {
-      $('#message').text(winner)
-      over = true
-    } else if ((gameBoard.length === 9) && (over === false)) {
-      $('#message').text('tie!')
-      over = true
+  if (over === false) {
+    event.preventDefault()
+    const index = $(event.target).data('square')
+    const value = player
+    gameBoard[index] = value
+    if ($(event.target).text() === '') {
+      $(event.target).text(player)
+      nextTurn()
+      const winner = checkForWinner()
+      if (winConditional === true) {
+        $('#message').text(winner)
+        over = true
+      } else if ((gameBoard.length === 9) && (over === false)) {
+        $('#message').text('tie!')
+        over = true
+      }
+      api.update(index, value, over)
+        .then(ui.updateGameSuccess)
+        .catch(ui.updateGameFailure)
     }
-    api.update(index, value, over)
-      .then(ui.updateGameSuccess)
-      .catch(ui.updateGameFailure)
   } else {
     console.log('the move is invalid')
     console.log($(event.target).text())
-    console.log('clicked')
+    // console.log('clicked')
   }
 }
 
@@ -153,6 +141,7 @@ const addHandlers = event => {
   $('.square').on('click', checkForTie)
   $('#get-stats').on('click', onGetStats)
   $('#create-game').on('click', onCreateGame)
+  $('#new-game').on('click', newGame)
 }
 
 module.exports = {
