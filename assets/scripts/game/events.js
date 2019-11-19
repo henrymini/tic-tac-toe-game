@@ -113,6 +113,7 @@ const onGridClick = event => {
   if (over === false) {
     event.preventDefault()
     const index = $(event.target).data('square')
+    over = false
     const value = player
     gameBoard[index] = value
     if ($(event.target).text() === '') {
