@@ -128,10 +128,12 @@ const onGetStats = () => {
 const onGridClick = event => {
   if (over === false) {
     event.preventDefault()
-    const index = $(event.target).data('box')
+    // console.log(event.target)
+    const index = $(event.target).data('square')
     const value = player
     gameBoard[index] = value
     console.log(index)
+    console.log(gameBoard)
     if ($(event.target).text() === '') {
       $(event.target).text(player)
       nextTurn()
