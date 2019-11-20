@@ -8,12 +8,13 @@ let over = false
 let player = 'x'
 
 const nextTurn = () => {
+  checkForWinner()
+  checkForTie()
+  $('#message').text('')
   if (player === 'x') {
     player = 'o'
-    console.log(player)
   } else {
     player = 'x'
-    console.log(player)
   }
 }
 
@@ -30,60 +31,83 @@ const newGame = event => {
   over = false
 }
 
-// let winConditional = false
-
 const checkForWinner = () => {
-  if (gameBoard[0] === 'x' && gameBoard[1] === 'x' && gameBoard[2] === 'x') {
-    over = true
-    return 'X has won!'
-  } else if (gameBoard[3] === 'x' && gameBoard[4] === 'x' && gameBoard[5] === 'x') {
-    over = true
-    return 'X has won!'
-  } else if (gameBoard[6] === 'x' && gameBoard[7] === 'x' && gameBoard[8] === 'x') {
-    over = true
-    return 'X has won!'
-  } else if (gameBoard[0] === 'x' && gameBoard[3] === 'x' && gameBoard[6] === 'x') {
-    over = true
-    return 'X has won!'
-  } else if (gameBoard[1] === 'x' && gameBoard[4] === 'x' && gameBoard[7] === 'x') {
-    over = true
-    return 'X has won!'
-  } else if (gameBoard[2] === 'x' && gameBoard[5] === 'x' && gameBoard[8] === 'x') {
-    over = true
-    return 'X has won!'
-  } else if (gameBoard[0] === 'x' && gameBoard[4] === 'x' && gameBoard[8] === 'x') {
-    over = true
-    return 'X has won!'
-  } else if (gameBoard[2] === 'x' && gameBoard[4] === 'x' && gameBoard[6] === 'x') {
+  if ((gameBoard[0] === 'x' && gameBoard[1] === 'x' && gameBoard[2] === 'x') ||
+    (gameBoard[3] === 'x' && gameBoard[4] === 'x' && gameBoard[5] === 'x') ||
+    (gameBoard[6] === 'x' && gameBoard[7] === 'x' && gameBoard[8] === 'x') ||
+    (gameBoard[0] === 'x' && gameBoard[3] === 'x' && gameBoard[6] === 'x') ||
+    (gameBoard[1] === 'x' && gameBoard[4] === 'x' && gameBoard[7] === 'x') ||
+    (gameBoard[2] === 'x' && gameBoard[5] === 'x' && gameBoard[8] === 'x') ||
+    (gameBoard[0] === 'x' && gameBoard[4] === 'x' && gameBoard[8] === 'x') ||
+    (gameBoard[2] === 'x' && gameBoard[4] === 'x' && gameBoard[6] === 'x')) {
     over = true
     return 'X has won!'
   }
-  if (gameBoard[0] === 'o' && gameBoard[1] === 'o' && gameBoard[2] === 'o') {
-    over = true
-    return 'O has won!'
-  } else if (gameBoard[3] === 'o' && gameBoard[4] === 'o' && gameBoard[5] === 'o') {
-    over = true
-    return 'O has won!'
-  } else if (gameBoard[6] === 'o' && gameBoard[7] === 'o' && gameBoard[8] === 'o') {
-    over = true
-    return 'O has won!'
-  } else if (gameBoard[0] === 'o' && gameBoard[3] === 'o' && gameBoard[6] === 'o') {
-    over = true
-    return 'O has won!'
-  } else if (gameBoard[1] === 'o' && gameBoard[4] === 'o' && gameBoard[7] === 'o') {
-    over = true
-    return 'O has won!'
-  } else if (gameBoard[2] === 'o' && gameBoard[5] === 'o' && gameBoard[8] === 'o') {
-    over = true
-    return 'O has won!'
-  } else if (gameBoard[0] === 'o' && gameBoard[4] === 'o' && gameBoard[8] === 'o') {
-    over = true
-    return 'O has won!'
-  } else if (gameBoard[2] === 'o' && gameBoard[4] === 'o' && gameBoard[6] === 'o') {
+  if ((gameBoard[0] === 'o' && gameBoard[1] === 'o' && gameBoard[2] === 'o') ||
+    (gameBoard[3] === 'o' && gameBoard[4] === 'o' && gameBoard[5] === 'o') ||
+    (gameBoard[6] === 'o' && gameBoard[7] === 'o' && gameBoard[8] === 'o') ||
+    (gameBoard[0] === 'o' && gameBoard[3] === 'o' && gameBoard[6] === 'o') ||
+    (gameBoard[1] === 'o' && gameBoard[4] === 'o' && gameBoard[7] === 'o') ||
+    (gameBoard[2] === 'o' && gameBoard[5] === 'o' && gameBoard[8] === 'o') ||
+    (gameBoard[0] === 'o' && gameBoard[4] === 'o' && gameBoard[8] === 'o') ||
+    (gameBoard[2] === 'o' && gameBoard[4] === 'o' && gameBoard[6] === 'o')) {
     over = true
     return 'O has won!'
   }
 }
+//
+// const checkForWinner = () => {
+//   if (gameBoard[0] === 'x' && gameBoard[1] === 'x' && gameBoard[2] === 'x') {
+//     over = true
+//     return 'X has won!'
+//   } else if (gameBoard[3] === 'x' && gameBoard[4] === 'x' && gameBoard[5] === 'x') {
+//     over = true
+//     return 'X has won!'
+//   } else if (gameBoard[6] === 'x' && gameBoard[7] === 'x' && gameBoard[8] === 'x') {
+//     over = true
+//     return 'X has won!'
+//   } else if (gameBoard[0] === 'x' && gameBoard[3] === 'x' && gameBoard[6] === 'x') {
+//     over = true
+//     return 'X has won!'
+//   } else if (gameBoard[1] === 'x' && gameBoard[4] === 'x' && gameBoard[7] === 'x') {
+//     over = true
+//     return 'X has won!'
+//   } else if (gameBoard[2] === 'x' && gameBoard[5] === 'x' && gameBoard[8] === 'x') {
+//     over = true
+//     return 'X has won!'
+//   } else if (gameBoard[0] === 'x' && gameBoard[4] === 'x' && gameBoard[8] === 'x') {
+//     over = true
+//     return 'X has won!'
+//   } else if (gameBoard[2] === 'x' && gameBoard[4] === 'x' && gameBoard[6] === 'x') {
+//     over = true
+//     return 'X has won!'
+//   }
+//   if (gameBoard[0] === 'o' && gameBoard[1] === 'o' && gameBoard[2] === 'o') {
+//     over = true
+//     return 'O has won!'
+//   } else if (gameBoard[3] === 'o' && gameBoard[4] === 'o' && gameBoard[5] === 'o') {
+//     over = true
+//     return 'O has won!'
+//   } else if (gameBoard[6] === 'o' && gameBoard[7] === 'o' && gameBoard[8] === 'o') {
+//     over = true
+//     return 'O has won!'
+//   } else if (gameBoard[0] === 'o' && gameBoard[3] === 'o' && gameBoard[6] === 'o') {
+//     over = true
+//     return 'O has won!'
+//   } else if (gameBoard[1] === 'o' && gameBoard[4] === 'o' && gameBoard[7] === 'o') {
+//     over = true
+//     return 'O has won!'
+//   } else if (gameBoard[2] === 'o' && gameBoard[5] === 'o' && gameBoard[8] === 'o') {
+//     over = true
+//     return 'O has won!'
+//   } else if (gameBoard[0] === 'o' && gameBoard[4] === 'o' && gameBoard[8] === 'o') {
+//     over = true
+//     return 'O has won!'
+//   } else if (gameBoard[2] === 'o' && gameBoard[4] === 'o' && gameBoard[6] === 'o') {
+//     over = true
+//     return 'O has won!'
+//   }
+// }
 
 const checkForTie = () => {
   for (let i = 0; i < gameBoard.length; i++) {
@@ -104,26 +128,22 @@ const onGetStats = () => {
 const onGridClick = event => {
   if (over === false) {
     event.preventDefault()
-    const index = $(event.target).data('.box')
-    over = false
+    const index = $(event.target).data('box')
     const value = player
     gameBoard[index] = value
-    console.log(gameBoard)
+    console.log(index)
     if ($(event.target).text() === '') {
       $(event.target).text(player)
       nextTurn()
       const winner = checkForWinner()
-      if (over === true) {
-        $('#message').text(winner)
-        over = true
-      } else if ((gameBoard.length === 9) && (over === false)) {
-        $('#message').text('tie!')
-        over = true
-      }
-      api.update(index, value, over)
-        .then(ui.updateGameSuccess)
-        .catch(ui.updateGameFailure)
+      $('#message').text(winner)
+    } else if (gameBoard.length === 9) {
+      $('#message').text('tie!')
+      over = true
     }
+    api.update(index, value, over)
+      .then(ui.updateGameSuccess)
+      .catch(ui.updateGameFailure)
   } else {
     console.log('the move is invalid')
     console.log($(event.target).text())
