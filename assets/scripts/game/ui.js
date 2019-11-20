@@ -22,7 +22,7 @@ const createGameSuccess = responseData => {
   store.game = responseData.game
   onSuccess('you have started a game')
   $('.after-auth').show()
-  $('.game-board').show()
+  $('.container-fluid').show()
 }
 
 const createGameFailure = responseData => {

@@ -22,7 +22,7 @@ const newGame = event => {
   player = 'x'
   gameBoard = []
   console.log('new game!')
-  $('.square').text('')
+  $('.box').text('')
   api.create()
     .then(ui.createGameSuccess)
     .catch(ui.createGameFailure)
@@ -30,57 +30,57 @@ const newGame = event => {
   over = false
 }
 
-let winConditional = false
+// let winConditional = false
 
 const checkForWinner = () => {
   if (gameBoard[0] === 'x' && gameBoard[1] === 'x' && gameBoard[2] === 'x') {
-    winConditional = true
+    over = true
     return 'X has won!'
   } else if (gameBoard[3] === 'x' && gameBoard[4] === 'x' && gameBoard[5] === 'x') {
-    winConditional = true
+    over = true
     return 'X has won!'
   } else if (gameBoard[6] === 'x' && gameBoard[7] === 'x' && gameBoard[8] === 'x') {
-    winConditional = true
+    over = true
     return 'X has won!'
   } else if (gameBoard[0] === 'x' && gameBoard[3] === 'x' && gameBoard[6] === 'x') {
-    winConditional = true
+    over = true
     return 'X has won!'
   } else if (gameBoard[1] === 'x' && gameBoard[4] === 'x' && gameBoard[7] === 'x') {
-    winConditional = true
+    over = true
     return 'X has won!'
   } else if (gameBoard[2] === 'x' && gameBoard[5] === 'x' && gameBoard[8] === 'x') {
-    winConditional = true
+    over = true
     return 'X has won!'
   } else if (gameBoard[0] === 'x' && gameBoard[4] === 'x' && gameBoard[8] === 'x') {
-    winConditional = true
+    over = true
     return 'X has won!'
   } else if (gameBoard[2] === 'x' && gameBoard[4] === 'x' && gameBoard[6] === 'x') {
-    winConditional = true
+    over = true
     return 'X has won!'
   }
   if (gameBoard[0] === 'o' && gameBoard[1] === 'o' && gameBoard[2] === 'o') {
-    winConditional = true
+    over = true
     return 'O has won!'
   } else if (gameBoard[3] === 'o' && gameBoard[4] === 'o' && gameBoard[5] === 'o') {
-    winConditional = true
+    over = true
     return 'O has won!'
   } else if (gameBoard[6] === 'o' && gameBoard[7] === 'o' && gameBoard[8] === 'o') {
-    winConditional = true
+    over = true
     return 'O has won!'
   } else if (gameBoard[0] === 'o' && gameBoard[3] === 'o' && gameBoard[6] === 'o') {
-    winConditional = true
+    over = true
     return 'O has won!'
   } else if (gameBoard[1] === 'o' && gameBoard[4] === 'o' && gameBoard[7] === 'o') {
-    winConditional = true
+    over = true
     return 'O has won!'
   } else if (gameBoard[2] === 'o' && gameBoard[5] === 'o' && gameBoard[8] === 'o') {
-    winConditional = true
+    over = true
     return 'O has won!'
   } else if (gameBoard[0] === 'o' && gameBoard[4] === 'o' && gameBoard[8] === 'o') {
-    winConditional = true
+    over = true
     return 'O has won!'
   } else if (gameBoard[2] === 'o' && gameBoard[4] === 'o' && gameBoard[6] === 'o') {
-    winConditional = true
+    over = true
     return 'O has won!'
   }
 }
@@ -94,14 +94,6 @@ const checkForTie = () => {
   return true
 }
 
-const onCreateGame = event => {
-  event.preventDefault()
-  api.create()
-    .then(ui.createGameSuccess)
-    .catch(ui.createGameFailure)
-  over = false
-}
-
 const onGetStats = () => {
   event.preventDefault()
   api.index()
@@ -112,15 +104,16 @@ const onGetStats = () => {
 const onGridClick = event => {
   if (over === false) {
     event.preventDefault()
-    const index = $(event.target).data('square')
+    const index = $(event.target).data('.box')
     over = false
     const value = player
     gameBoard[index] = value
+    console.log(gameBoard)
     if ($(event.target).text() === '') {
       $(event.target).text(player)
       nextTurn()
       const winner = checkForWinner()
-      if (winConditional === true) {
+      if (over === true) {
         $('#message').text(winner)
         over = true
       } else if ((gameBoard.length === 9) && (over === false)) {
@@ -139,11 +132,10 @@ const onGridClick = event => {
 }
 
 const addHandlers = event => {
-  $('.square').on('click', onGridClick)
-  $('.square').on('click', checkForWinner)
-  $('.square').on('click', checkForTie)
+  $('.box').on('click', onGridClick)
+  $('.box').on('click', checkForWinner)
+  $('.box').on('click', checkForTie)
   $('#get-stats').on('click', onGetStats)
-  $('#create-game').on('click', onCreateGame)
   $('#new-game').on('click', newGame)
 }
 

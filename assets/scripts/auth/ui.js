@@ -54,6 +54,8 @@ const onSignoutSuccess = responseData => {
   onSuccess('you will be back')
   $('.before-auth').show()
   $('.after-auth').hide()
+  $('.container-fluid').hide()
+  // $('.game-board').hide()
   console.log('signed out')
 }
 
