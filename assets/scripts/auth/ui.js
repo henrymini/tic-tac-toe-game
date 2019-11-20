@@ -30,14 +30,14 @@ const onSignupFailure = () => {
 
 const onSigninSuccess = responseData => {
   store.user = responseData.user
-  console.log(store)
+  // console.log(store)
   onSuccess('make your choice')
   $('.after-auth').show()
   $('.before-auth').hide()
-  console.log('sign in worked')
+  // console.log('sign in worked')
 }
 
-const onSignInFailure = () => {
+const onSigninFailure = () => {
   onFailure('that is not an account')
 }
 
@@ -56,7 +56,7 @@ const onSignoutSuccess = responseData => {
   $('.after-auth').hide()
   $('.container-fluid').hide()
   // $('.game-board').hide()
-  console.log('signed out')
+  // console.log('signed out')
 }
 
 const onSignoutFailure = () => {
@@ -67,7 +67,7 @@ module.exports = {
   onSignupSuccess,
   onSignupFailure,
   onSigninSuccess,
-  onSignInFailure,
+  onSigninFailure,
   onChangePasswordSuccess,
   onChangePasswordFailure,
   onSignoutSuccess,

@@ -37,8 +37,8 @@ const onSignup = event => {
     .then(ui.onSignupSuccess)
     // .then(console.log('worked'))
     .catch(ui.onSignupFailure)
-  console.log(formData)
-  console.log('signed up')
+  // console.log(formData)
+  // console.log('signed up')
 }
 
 const onSignin = event => {
@@ -48,8 +48,8 @@ const onSignin = event => {
   api.signin(formData)
     .then(ui.onSigninSuccess)
     .catch(ui.onSigninFailure)
-  console.log(formData)
-  console.log('signed in')
+  // console.log(formData)
+  // console.log('signed in')
 }
 
 const onChangePassword = event => {
@@ -59,7 +59,7 @@ const onChangePassword = event => {
   api.changepw(formData)
     .then(ui.onChangePasswordSuccess)
     .catch(ui.onChangePasswordFailure)
-  console.log(formData)
+  // console.log(formData)
 }
 
 const onSignout = event => {
@@ -67,7 +67,7 @@ const onSignout = event => {
   api.signout()
     .then(ui.onSignoutSuccess)
     .catch(ui.onSignoutFailure)
-  console.log('yeeeeeeee')
+  // console.log('yeeeeeeee')
 }
 
 const addHandlers = event => {

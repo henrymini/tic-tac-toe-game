@@ -22,7 +22,7 @@ const newGame = event => {
   event.preventDefault()
   player = 'x'
   gameBoard = []
-  console.log('new game!')
+  // console.log('new game!')
   $('.box').text('')
   api.create()
     .then(ui.createGameSuccess)
@@ -132,8 +132,8 @@ const onGridClick = event => {
     const index = $(event.target).data('square')
     const value = player
     gameBoard[index] = value
-    console.log(index)
-    console.log(gameBoard)
+    // console.log(index)
+    // console.log(gameBoard)
     if ($(event.target).text() === '') {
       $(event.target).text(player)
       nextTurn()
@@ -147,8 +147,8 @@ const onGridClick = event => {
       .then(ui.updateGameSuccess)
       .catch(ui.updateGameFailure)
   } else {
-    console.log('the move is invalid')
-    console.log($(event.target).text())
+    // console.log('the move is invalid')
+    // console.log($(event.target).text())
     // console.log('clicked')
   }
 }
