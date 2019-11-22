@@ -24,6 +24,7 @@ const newGame = event => {
   event.preventDefault()
   player = 'x'
   gameBoard = []
+  moveCounter = 0
   // console.log('new game!')
   $('.box').text('')
   api.create()
