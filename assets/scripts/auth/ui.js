@@ -22,6 +22,8 @@ const onFailure = message => {
 
 const onSignupSuccess = () => {
   onSuccess('welcome to the world of the Game')
+  $('.after-auth').show()
+  $('.before-auth').hide()
 }
 
 const onSignupFailure = () => {
